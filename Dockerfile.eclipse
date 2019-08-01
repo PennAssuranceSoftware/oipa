@@ -20,6 +20,9 @@ RUN chmod 755 build.sh
 COPY eclipse/profile.sh .
 RUN chmod 755 profile.sh
 
+# Eclipse Settings
+RUN sed -i -e 's/Xmx1024m/Xmx10536m/g' /opt/eclipse/eclipse.ini
+
 # Volumes
 RUN mkdir -p ${HOME}/.m2
 RUN mkdir -p ${HOME}/git

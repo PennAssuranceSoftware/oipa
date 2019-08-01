@@ -1,0 +1,23 @@
+FROM picoded/ubuntu-openjdk-8-jdk
+
+RUN apt-get update && apt-get install curl xdg-utils -y
+
+
+# Install Rules Companion
+ARG DEBUGGER_VERSION=
+RUN if [ -z "$DEBUGGER_VERSION" ]; then echo "NOT SET - ERROR"; exit 1; else : ; fi
+RUN mkdir -p /opt/rc
+RUN curl -sSL "http://repo.pennassurancesoftware.com/artifactory/public/com/pennassurancesoftware/oipa-rules/${DEBUGGER_VERSION}/oipa-rules-${DEBUGGER_VERSION}-runnable.jar" -o /opt/rc/rules.jar
+
+RUN echo "#! /bin/bash" > /tmp/run && echo "" >> /tmp/run && echo "java -jar /opt/rc/rules.jar" >> /tmp/run \
+   && chmod +x /tmp/run \
+   && mv /tmp/run /usr/local/bin/
+
+# Configuration
+COPY rules.conf.json /root/.oipa-rules/conf.json
+
+CMD [ "run" ]
+
+# java -jar /opt/jd/jd-gui.jar PASJava.war
+# docker build --build-arg DEBUGGER_VERSION=1.05.000 -t local/rules -f Dockerfile.rules .
+# docker run --rm -it -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY --device /dev/snd --name rules local/rules

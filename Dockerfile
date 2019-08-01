@@ -80,7 +80,8 @@ VOLUME /overrides
 
 # Environment Variables
 ENV LOG_DIR=/logs
-ENV JVM_ARGS="-Xms512m -Xmx1024m -Dwas.debug.mode=true -Dcom.ibm.websphere.ras.inject.at.transform=true -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=7777"
+ENV JMX_ARGS="-Djavax.management.builder.initial= -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.port=1099"
+ENV JVM_ARGS="-Xms512m -Xmx1024m -Dwas.debug.mode=true -Dcom.ibm.websphere.ras.inject.at.transform=true -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=7777 ${JMX_ARGS}"
 ENV DB_HOST=104.208.247.218
 ENV DB_NAME=OIPA_GA
 ENV DB_USER=sqlUser

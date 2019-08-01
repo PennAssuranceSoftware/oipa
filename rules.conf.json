@@ -1,0 +1,50 @@
+{
+	"environments": [
+		{
+			"name": "Sandbox",
+			"app": {
+				"url": "http://oipa:9080/PASJava",
+				"credentials": {
+					"user": "LTJ49",
+					"password": "Jerome44*B"
+				}
+			},
+			"db": {
+				"app": {
+					"host": "db",
+					"name": "OIPA_Sandbox",
+					"user": "sa",
+					"password": "SQLServerPass1"
+				}
+			}
+		},
+		{
+			"name": "Aging3",
+			"app": {
+				"url": "http://oipa:9080/PASJava",
+				"credentials": {
+					"user": "LTJ49",
+					"password": "Jerome44*B"
+				}
+			},
+			"db": {
+				"app": {
+					"host": "db",
+					"name": "OIPA_Aging3",
+					"user": "sa",
+					"password": "SQLServerPass1"
+				}
+			}
+		}
+	],
+	"git": {
+		"uri": "https://github.com/jeromebridge/securian.git",
+		"user": "jeromebridge",
+		"password": "xx",
+		"name": "Jerome Bridge",
+		"email": "jeromebridge@pennassurancesoftware.com"
+	},
+	"role": {
+		"type": "releasemanager"
+	}
+}

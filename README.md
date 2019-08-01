@@ -102,6 +102,13 @@ SQL Client.
 xhost + && docker-compose exec query ./run.sh
 ```
 
+# Rule Companion
+Once you have setup your application you will be able to use the Penn Assurance Software Rules Companion. Navigate
+to the `oipa` directory you cloned from git earlier and run the following command to start the Rules Companion.
+```
+xhost + && docker-compose exec rules run
+```
+
 # Java Decompiler
 You can search and browse the OIPA war file and decompiled code with the decompiler. Once you have setup
 your application you will be able to run the Java Decompiler in that environment. Navigate
